@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Economist & Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ RESET & BASE ============ */
+  :root{
+    --navy: #1e293b;
+    --navy-deep: #14202f;
+    --slate: #64748b;
+    --slate-light: #94a3b8;
+    --slate-pale: #e2e8f0;
+    --paper: #f8fafc;
+    --white: #ffffff;
+    --accent: #0ea5e9;
+    --accent-deep: #0284c7;
+    --accent-soft: rgba(14,165,233,0.12);
+    --up: #22c55e;
+    --radius-card: 4px;
+    --radius-pill: 999px;
+    --max-w: 1180px;
+    --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    font-family: var(--font-body);
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color: inherit; text-decoration: none; }
+
+  ul{ list-style:none; margin:0; padding:0; }
+
+  h1,h2,h3,h4{ margin:0; font-weight:600; letter-spacing:-0.01em; }
+
+  p{ margin:0; }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section{ padding: 96px 0; }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
+  /* ============ NAVIGATION ============ */
+  .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(30,41,59,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-inner{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    color: var(--white);
+    font-weight:600;
+    font-size: 1.05rem;
+  }
+
+  .brand-mark{
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+
+  .nav-links{
+    display:flex;
+    gap: 8px;
+    align-items:center;
+  }
+
+  .nav-links a{
+    color: var(--slate-pale);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible{
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    width: 42px;
+    height: 38px;
+    cursor:pointer;
+    position: relative;
+  }
+
+  .nav-toggle span,
+  .nav-toggle span::before,
+  .nav-toggle span::after{
+    content:"";
+    position:absolute;
+    left:9px;
+    right:9px;
+    height:2px;
+    background: var(--white);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-toggle span{ top:18px; }
+  .nav-toggle span::before{ top:-7px; }
+  .nav-toggle span::after{ top:7px; }
+
+  .nav-toggle[aria-expanded="true"] span{ background: transparent; }
+  .nav-toggle[aria-expanded="true"] span::before{ transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span::after{ transform: translateY(-7px) rotate(-45deg); }
+
+  /* ============ HERO ============ */
+  .hero{
+    background:
+      linear-gradient(180deg, var(--orange) 0%, var(--orange-deep) 100%);
+    color: var(--white);
+    padding: 104px 0 88px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.7) 40%, transparent);
+    pointer-events: none;
+  }
+
+  .hero-inner{
+    position: relative;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items:center;
+  }
+
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: var(--slate-light);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+
+  .eyebrow-line .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--up);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.18);
+  }
+
+  .hero h1{
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    line-height: 1.12;
+    color: var(--white);
+    max-width: 16ch;
+  }
+
+  .hero h1 .line-accent{
+    color: var(--accent);
+  }
+
+  .hero p.lede{
+    margin-top: 22px;
+    color: var(--slate-pale);
+    font-size: 1.08rem;
+    max-width: 52ch;
+  }
+
+  .hero-cta{
+    margin-top: 34px;
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 26px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    cursor:pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn:hover{ transform: translateY(-1px); }
+
+  .btn-primary{
+    background: var(--accent);
+    color: var(--navy-deep);
+  }
+  .btn-primary:hover{ background: #38bdf8; }
+
+  .btn-outline{
+    background: transparent;
+    border-color: rgba(255,255,255,0.28);
+    color: var(--white);
+  }
+  .btn-outline:hover{ border-color: var(--white); }
+
+  /* Hero data panel */
+  .hero-panel{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 26px;
+    position: relative;
+  }
+
+  .hero-panel-head{
+    display:flex;
+    justify-content: space-between;
+    align-items:baseline;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--slate-light);
+    margin-bottom: 18px;
+  }
+
+  .hero-panel-head strong{ color: var(--white); font-size: 0.85rem; }
+
+  .sparkline-row{
+    display:flex;
+    align-items:flex-end;
+    gap: 6px;
+    height: 90px;
+    margin-bottom: 18px;
+  }
+
+  .sparkline-row i{
+    flex:1;
+    background: linear-gradient(180deg, var(--accent), rgba(14,165,233,0.25));
+    border-radius: 3px 3px 0 0;
+    display:block;
+  }
+
+  .hero-panel-stats{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px;
+  }
+
+  .hero-panel-stats div strong{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    color: var(--white);
+  }
+  .hero-panel-stats div span{
+    font-size: 0.75rem;
+    color: var(--slate-light);
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  .section-head{
+    max-width: 62ch;
+    margin-bottom: 48px;
+  }
+
+  .section-head .kicker{
+    font-family: var(--font-mono);
+    color: var(--accent-deep);
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display:block;
+  }
+
+  .section-head h2{
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    color: var(--navy);
+  }
+
+  .section-head p{
+    margin-top: 14px;
+    color: var(--slate);
+    font-size: 1.02rem;
+  }
+
+  /* ============ ABOUT ============ */
+  #about{ background: var(--paper); }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items:start;
+  }
+
+  .about-photo{
+    aspect-ratio: 4/5;
+    border-radius: 8px;
+    background:
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    position: relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .about-photo::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 14px);
+  }
+  .about-photo span{
+    position: relative;
+    font-family: var(--font-mono);
+    color: var(--slate-light);
+    font-size: 0.85rem;
+    text-align:center;
+    padding: 20px;
+  }
+
+  .about-copy p{
+    color: var(--slate);
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+
+  .about-copy p strong{ color: var(--navy); }
+
+  .about-stats{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid var(--slate-pale);
+  }
+
+  .about-stats div strong{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    color: var(--navy);
+  }
+  .about-stats div span{
+    font-size: 0.85rem;
+    color: var(--slate);
+  }
+
+  /* ============ SKILLS ============ */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--slate-pale);
+    border: 1px solid var(--slate-pale);
+    border-radius: 8px;
+    overflow:hidden;
+  }
+
+  .skill-cell{
+    background: var(--white);
+    padding: 28px 22px;
+  }
+
+  .skill-cell h3{
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .skill-cell ul li{
+    font-size: 0.92rem;
+    color: var(--slate);
+    padding: 5px 0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .skill-cell ul li::before{
+    content:"";
+    width:5px; height:5px;
+    background: var(--accent);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ============ PROJECTS ============ */
+  #projects{ background: var(--paper); }
+
+  .project-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .project-card{
+    background: var(--white);
+    border: 1px solid var(--slate-pale);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-card);
+    padding: 30px 26px;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+  }
+
+  .project-tag{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-deep);
+    background: var(--accent-soft);
+    display:inline-block;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    width: fit-content;
+  }
+
+  .project-card h3{
+    font-size: 1.15rem;
+    color: var(--navy);
+  }
+
+  .project-card p{
+    color: var(--slate);
+    font-size: 0.95rem;
+  }
+
+  .project-metric-row{
+    display:flex;
+    gap: 20px;
+    padding: 14px 0;
+    border-top: 1px solid var(--slate-pale);
+    border-bottom: 1px solid var(--slate-pale);
+  }
+
+  .project-metric-row div strong{
+    display:block;
+    font-family: var(--font-mono);
+    color: var(--navy);
+    font-size: 1.05rem;
+  }
+  .project-metric-row div span{
+    font-size: 0.75rem;
+    color: var(--slate);
+  }
+
+  .project-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px;
+  }
+
+  .project-stack span{
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    color: var(--slate);
+    background: var(--paper);
+    border: 1px solid var(--slate-pale);
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  .project-link{
+    margin-top: auto;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--accent-deep);
+    padding-top: 6px;
+  }
+  .project-link:hover{ color: var(--navy); }
+
+  /* ============ CONTACT ============ */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 56px;
+  }
+
+  .contact-info h2{
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .contact-info p{
+    color: var(--slate);
+    margin-bottom: 28px;
+  }
+
+  .contact-detail{
+    display:flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--slate-pale);
+  }
+  .contact-detail:last-child{ border-bottom: 1px solid var(--slate-pale); }
+
+  .contact-detail .label{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--slate);
+    width: 90px;
+    flex-shrink:0;
+    padding-top:2px;
+    line-height: 1.6;
+  }
+
+  .contact-detail .value{
+    color: var(--navy);
+    font-weight:500;
+    font-size: 0.98rem;
+  }
+
+  .contact-form{
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 36px;
+  }
+
+  .form-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .field{
+    margin-bottom: 20px;
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+  }
+
+  .field label{
+    font-size: 0.82rem;
+    color: var(--slate-pale);
+    font-weight:500;
+  }
+
+  .field input,
+  .field textarea{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder{ color: var(--slate-light); }
+
+  .field input:focus,
+  .field textarea:focus{
+    outline:none;
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.09);
+  }
+
+  .contact-form .btn-primary{
+    width:100%;
+    justify-content:center;
+    padding: 14px 26px;
+    margin-top: 6px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background: var(--navy-deep);
+    color: var(--slate-light);
+    padding: 34px 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-inner{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 12px;
+  }
+
+  .footer-inner .brand-mark{ color: var(--accent); }
+
+  .footer-links{ display:flex; gap: 20px; }
+  .footer-links a:hover{ color: var(--white); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-photo{ aspect-ratio: 16/9; max-width: 420px; }
+    .project-grid{ grid-template-columns: 1fr 1fr; }
+    .skills-grid{ grid-template-columns: repeat(2, 1fr); }
+    .contact-grid{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px){
+    .nav-toggle{ display:block; }
+    .nav-links{
+      position: absolute;
+      top: 72px;
+      left:0; right:0;
+      background: var(--navy);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px 20px 22px;
+      gap: 4px;
+      display:none;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-links.open{ display:flex; }
+    .nav-links a{ width:100%; padding: 12px 14px; }
+
+    section{ padding: 64px 0; }
+    .wrap{ padding: 0 22px; }
+
+    .project-grid{ grid-template-columns: 1fr; }
+    .skills-grid{ grid-template-columns: 1fr 1fr; }
+    .form-row{ grid-template-columns: 1fr; }
+    .hero-panel-stats{ grid-template-columns: repeat(3,1fr); }
+  }
+
+  @media (max-width: 460px){
+    .skills-grid{ grid-template-columns: 1fr; }
+    .about-stats{ grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  }
+
+  /* ============ SERVICES & PRICING ============ */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:24px;
+    margin-bottom:40px;
+  }
+
+  .pricing-card{
+    background:var(--white);
+    border:1px solid var(--slate-pale);
+    border-radius:8px;
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    text-align:center;
+    transition:box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .pricing-card:hover{
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+    transform:translateY(-2px);
+  }
+
+  .pricing-card .service-name{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:var(--accent-deep);
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  .pricing-card .price{
+    font-size:2.2rem;
+    font-weight:700;
+    color:var(--navy);
+    line-height:1.1;
+  }
+
+  .pricing-card .price span{
+    font-size:0.95rem;
+    font-weight:500;
+    color:var(--slate);
+  }
+
+  .pricing-card p{
+    color:var(--slate);
+    font-size:0.92rem;
+    line-height:1.5;
+  }
+
+  .payment-banner{
+    text-align:center;
+    padding:20px 28px;
+    background:var(--navy);
+    border-radius:8px;
+    margin-top:8px;
+  }
+
+  .payment-banner span{
+    font-family:var(--font-mono);
+    font-size:0.88rem;
+    color:var(--slate-pale);
+    letter-spacing:0.03em;
+  }
+
+  .payment-banner strong{
+    color:var(--white);
+    font-weight:600;
+  }
+
+  @media (max-width:900px){
+    .pricing-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  @media (max-width:720px){
+    .pricing-grid{ grid-template-columns:1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="brand"><span class="brand-mark">Clever Bupalla</span></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow-line"><span class="dot"></span>Open to research & analytics roles</div>
+        <h1>Turning economic data into decisions that hold up under scrutiny<span class="line-accent">.</span></h1>
+        <p style="margin-top:12px; font-family:var(--font-mono); font-size:0.95rem; color:var(--slate-light); letter-spacing:0.02em;">Data-Driven Economist & Analytics Consultant</p>
+        <p class="lede">I'm an economist and data analyst who builds forecasting models, tests hypotheses rigorously, and designs dashboards that make macroeconomic trends legible to decision-makers.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="hero-panel-head">
+          <span>GDP_GROWTH_FORECAST.PY</span>
+          <strong>Q3 est. +2.4%</strong>
+        </div>
+        <div class="sparkline-row">
+          <i style="height:35%"></i>
+          <i style="height:48%"></i>
+          <i style="height:40%"></i>
+          <i style="height:62%"></i>
+          <i style="height:55%"></i>
+          <i style="height:74%"></i>
+          <i style="height:68%"></i>
+          <i style="height:88%"></i>
+          <i style="height:80%"></i>
+          <i style="height:100%"></i>
+        </div>
+        <div class="hero-panel-stats">
+          <div><strong>0.91</strong><span>R&sup2; fit</span></div>
+          <div><strong>±0.3</strong><span>RMSE</span></div>
+          <div><strong>12</strong><span>Indicators</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-photo">
+        <img src="WhatsApp Image 2026-09-05 at 16.35.31 (1).jpeg" alt="Clever Bupalla - Portrait" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+      </div>
+      <div class="about-copy">
+        <span class="kicker" style="font-family:var(--font-mono); color:var(--accent-deep); font-size:0.85rem;">About</span>
+        <h2 style="margin-top:10px; margin-bottom:8px; font-size:clamp(1.6rem,3vw,2.15rem); color:var(--navy);">Data-Driven Economist & Analytics Consultant</h2>
+        <p style="margin-bottom:20px; color:var(--slate); font-size:1.02rem;">Grounded in economic theory, sharpened by data</p>
+        <p>I'm an economist with a background in applied statistics, specializing in <strong>time-series forecasting</strong>, <strong>experimental design</strong>, and <strong>macroeconomic analysis</strong>. My work sits at the intersection of rigorous methodology and practical business impact — I care as much about whether a model is statistically sound as whether it's actually useful to the people reading it.</p>
+        <p>Over the past several years I've worked with public datasets, survey microdata, and internal experimentation platforms to help teams answer questions like: is this policy working, is this price change moving demand, and where is the economy headed next quarter.</p>
+        <p>Tools of choice: Python and R for modeling, SQL for data wrangling, and a genuine belief that a well-labeled chart is worth more than a paragraph of caveats.</p>
+
+        <div style="margin-top:24px; padding:20px; background:var(--white); border:1px solid var(--slate-pale); border-radius:8px;">
+          <h3 style="font-size:1rem; color:var(--navy); margin-bottom:8px;">Education</h3>
+          <p style="color:var(--navy); font-weight:500;">Egerton University</p>
+          <p style="color:var(--slate); font-size:0.92rem;">Bachelor's Degree in Economics and Statistics</p>
+        </div>
+
+        <div class="about-stats">
+          <div><strong>3+</strong><span>Core Frameworks</span></div>
+          <div><strong>30+</strong><span>Models shipped</span></div>
+          <div><strong>12</strong><span>Datasets published</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Skills</span>
+        <h2>The toolkit behind the analysis</h2>
+        <p>A blend of econometric theory, statistical programming, and the communication skills needed to make results actionable.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-cell">
+          <h3>Languages</h3>
+          <ul>
+            <li>Python (pandas, statsmodels)</li>
+            <li>R (tidyverse, ggplot2)</li>
+            <li>SQL</li>
+            <li>Git version control</li>
+          </ul>
+        </div>
+        <div class="skill-cell">
+          <h3>Methodologies</h3>
+          <ul>
+            <li>Time-Series Forecasting</li>
+            <li>Econometrics & Causal Inference</li>
+            <li>A/B & Experiment Design</li>
+            <li>Hypothesis Testing</li>
+          </ul>
+        </div>
+        <div class="skill-cell">
+          <h3>Visualization</h3>
+          <ul>
+            <li>Tableau & Power BI</li>
+            <li>D3.js & Plotly</li>
+            <li>Dashboard Design</li>
+            <li>Executive Reporting</li>
+          </ul>
+        </div>
+        <div class="skill-cell">
+          <h3>Domain Knowledge</h3>
+          <ul>
+            <li>Macroeconomic Indicators</li>
+            <li>Survey Methodology</li>
+            <li>Policy Evaluation</li>
+            <li>Regression & Panel Models</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Projects</span>
+        <h2>Selected data-driven work</h2>
+        <p>Three projects spanning forecasting, experimentation, and visualization — the core disciplines of applied economic analysis.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- Project 1 -->
+        <article class="project-card">
+          <span class="project-tag">Forecasting</span>
+          <h3>Econometric Forecasting Model</h3>
+          <p>An ARIMA/VAR-based forecasting pipeline built in Python to project quarterly GDP growth and inflation using 15 years of national accounts data, with backtested confidence intervals.</p>
+          <div class="project-metric-row">
+            <div><strong>0.91</strong><span>R&sup2; on holdout</span></div>
+            <div><strong>±0.3pp</strong><span>Forecast error</span></div>
+            <div><strong>15yr</strong><span>Data horizon</span></div>
+          </div>
+          <div class="project-stack">
+            <span>Python</span><span>statsmodels</span><span>pandas</span><span>ARIMA</span>
+          </div>
+          <a href="#" class="project-link">View case study &rarr;</a>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <span class="project-tag">Experimentation</span>
+          <h3>Statistical A/B Testing Dashboard</h3>
+          <p>An R-based dashboard for designing and monitoring A/B tests, calculating required sample sizes, and reporting significance with proper correction for multiple comparisons.</p>
+          <div class="project-metric-row">
+            <div><strong>40+</strong><span>Tests analyzed</span></div>
+            <div><strong>95%</strong><span>Confidence level</span></div>
+            <div><strong>3</strong><span>Correction methods</span></div>
+          </div>
+          <div class="project-stack">
+            <span>R</span><span>Shiny</span><span>ggplot2</span><span>t-tests</span>
+          </div>
+          <a href="#" class="project-link">View case study &rarr;</a>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <span class="project-tag">Visualization</span>
+          <h3>Macroeconomic Indicator Tracker</h3>
+          <p>An interactive visualization tracking inflation, unemployment, and interest rates across regions, letting users filter by time period and compare indicators side by side.</p>
+          <div class="project-metric-row">
+            <div><strong>12</strong><span>Indicators tracked</span></div>
+            <div><strong>25yr</strong><span>Historical range</span></div>
+            <div><strong>Weekly</strong><span>Data refresh</span></div>
+          </div>
+          <div class="project-stack">
+            <span>D3.js</span><span>Python</span><span>Plotly</span><span>APIs</span>
+          </div>
+          <a href="#" class="project-link">View case study &rarr;</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES & PRICING ============ -->
+  <section id="services" style="background:var(--paper);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Services & Pricing</span>
+        <h2>What I can do for you</h2>
+        <p>Transparent rates for data analysis, forecasting, and dashboard projects. Custom packages available for ongoing engagements.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <span class="service-name">Data Insights & Cleaning</span>
+          <div class="price">$50 – $150 <span>USD</span></div>
+          <p style="font-size:0.82rem; color:var(--slate-light); margin-bottom:8px;">Depending on project scope and dataset complexity</p>
+          <p>Data wrangling, cleaning, exploratory analysis, and actionable insights from raw datasets.</p>
+        </div>
+        <div class="pricing-card">
+          <span class="service-name">Econometric Forecasting</span>
+          <div class="price">$150 – $400 <span>USD</span></div>
+          <p style="font-size:0.82rem; color:var(--slate-light); margin-bottom:8px;">Depending on project scope and dataset complexity</p>
+          <p>Time-series models, regression analysis, and forecast reports with confidence intervals.</p>
+        </div>
+        <div class="pricing-card">
+          <span class="service-name">BI Analytics & Dashboards</span>
+          <div class="price">$300 – $800+ <span>USD</span></div>
+          <p style="font-size:0.82rem; color:var(--slate-light); margin-bottom:8px;">Depending on project scope and dataset complexity</p>
+          <p>Interactive dashboards, executive reports, and visualizations using Tableau, Power BI, or D3.js.</p>
+        </div>
+      </div>
+
+      <div class="payment-banner">
+        <span><strong>Accepted Payment Options:</strong> &nbsp;PayPal &nbsp;|&nbsp; Payoneer &nbsp;|&nbsp; Visa & Mastercard &nbsp;|&nbsp; M-Pesa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <span class="kicker" style="font-family:var(--font-mono); color:var(--accent-deep); font-size:0.85rem;">Contact</span>
+        <h2>Let's talk about your data</h2>
+        <p>Whether you need a forecasting model, an experiment designed correctly, or a dashboard people actually understand — I'd like to hear about it.</p>
+
+        <div class="contact-detail">
+          <span class="label">Email</span>
+          <span class="value">cleverbupalla5@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Phone</span>
+          <span class="value">0799003503</span>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Location</span>
+          <span class="value">Available for remote & hybrid roles</span>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Elsewhere</span>
+          <span class="value"><a href="#" target="_blank" style="color:var(--accent-deep); text-decoration:none; font-weight:500;">LinkedIn</a> &middot; <a href="#" target="_blank" style="color:var(--accent-deep); text-decoration:none; font-weight:500;">GitHub</a> &middot; <a href="#" target="_blank" style="color:var(--accent-deep); text-decoration:none; font-weight:500;">Kaggle</a></span>
+        </div>
+      </div>
+
+      <!--
+        PASTE YOUR FORMSPREE KEY HERE:
+        1. Sign up free at https://formspree.io
+        2. Create a new form and copy your form ID (e.g. "abcdwxyz")
+        3. Replace YOUR_FORM_ID in the action URL below:
+           action="https://formspree.io/f/your_form_id_here"
+      -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <!-- Naming this field "_subject" tells Formspree to use it as the email subject line -->
+          <input type="text" id="subject" name="_subject" placeholder="What would you like to discuss?" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me a bit about your project or role..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div><span class="brand-mark" style="font-family:var(--font-mono);">Clever Bupalla</span> &mdash; Economist & Data Analyst</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>&copy; 2026 All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Contact form: submits directly to Formspree (see action="" above).
+    // This just gives the user a friendly confirmation using the Fetch API
+    // instead of a full page reload, then resets the form.
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          alert('Thanks for reaching out! Your message has been sent.');
+          contactForm.reset();
+        } else {
+          alert('Something went wrong sending your message. Please try again or email me directly.');
+        }
+      }).catch(() => {
+        alert('Something went wrong sending your message. Please try again or email me directly.');
+      });
+    });
+  </script>
+
+</body>
+</html>
